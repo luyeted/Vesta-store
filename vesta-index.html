@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>وِستا | فروشگاه آنلاین</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f7f7f5;color:#242424}
+header{background:#fff;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;gap:12px;flex-wrap:wrap}
+.logo{font-size:27px;font-weight:bold;color:#1d4b43}nav a{color:#444;text-decoration:none;margin:0 10px}
+.hero{padding:70px 8%;background:linear-gradient(120deg,#e8f0eb,#f7eee5);text-align:center}
+.hero h1{font-size:clamp(28px,5vw,40px);margin:0 0 14px}.hero p{color:#555;font-size:17px}
+main{max-width:1100px;margin:40px auto;padding:0 20px}.tools{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+input{padding:12px 15px;border:1px solid #ddd;border-radius:10px;font:inherit;flex:1;min-width:220px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:white;border-radius:16px;padding:16px;box-shadow:0 4px 18px #0000000a}
+.pic{height:150px;border-radius:12px;background:#e9eee9;display:grid;place-items:center;font-size:58px}
+.card h3{margin:15px 0 8px}.price{font-weight:bold;color:#1d4b43}
+button{border:0;background:#1d4b43;color:white;padding:11px 16px;border-radius:9px;font:inherit;cursor:pointer}
+footer{text-align:center;padding:30px;color:#777}
+#cart{font-weight:bold;color:#1d4b43}
+</style></head><body>
+<header><div class="logo">وِستا</div><nav><a href="#">خانه</a><a href="#products">محصولات</a><a href="#about">درباره ما</a></nav><div id="cart">سبد خرید: ۰</div></header>
+<section class="hero"><h1>به دنیای وِستا خوش آمدید</h1><p>انتخابی زیبا برای زندگی روزمره شما</p><a href="#products"><button>مشاهده محصولات</button></a></section>
+<main id="products"><h2>محصولات منتخب</h2><div class="tools"><input id="search" placeholder="جست‌وجوی محصول..."></div><div class="products" id="list"></div></main>
+<footer id="about">وِستا — تجربه‌ای ساده و دلنشین از خرید آنلاین</footer>
+<script>
+const items=[["کیف دستی مینیمال","۸۹۰٬۰۰۰ تومان","👜"],["ماگ سرامیکی","۲۴۰٬۰۰۰ تومان","☕"],["چراغ رومیزی","۶۷۰٬۰۰۰ تومان","💡"],["گلدان دکوراتیو","۳۲۰٬۰۰۰ تومان","🏺"]];
+let count=0;
+function render(q=""){document.getElementById("list").innerHTML=items.filter(x=>x[0].includes(q)).map(x=>`<article class="card"><div class="pic">${x[2]}</div><h3>${x[0]}</h3><p class="price">${x[1]}</p><button onclick="add()">افزودن به سبد خرید</button></article>`).join("")}
+function add(){count++;document.getElementById("cart").textContent="سبد خرید: "+count.toLocaleString("fa-IR")}
+document.getElementById("search").addEventListener("input",e=>render(e.target.value.trim()));render();
+</script></body></html>
